@@ -13,7 +13,7 @@ const postConductividad = async (tocOnline)=>{
     try{
 
         const TOC = new Mamovsar(tocOnline)
-        TOC.save();
+       await TOC.save();
 
         return 'Dato guardado'
 
@@ -56,7 +56,7 @@ function iniciarConexion() {
     console.log(`[${new Date().toLocaleTimeString()}] Conectado a ${PUERTO_OBJETIVO}`);
   });
 
-  parser.on('data', (data) => {
+  parser.on('data', async (data) => {
     console.log('Datos recibidos:', data);
     dataSplit = data.split(',')
     tocOnline ={
@@ -83,7 +83,8 @@ function iniciarConexion() {
     }
     console.log(tocOnline)
     try {
-      postConductividad(tocOnline)
+     const result = await postConductividad(tocOnline)
+     console.log(result)
     } catch (error) {
       console.log(error)
     }
