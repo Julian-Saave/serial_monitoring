@@ -52,8 +52,12 @@ function iniciarConexion() {
   parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }));
 
   port.on('open', () => {
-    const data = PUERTO_OBJETIVO
+
     console.log(`[${new Date().toLocaleTimeString()}] Conectado a ${PUERTO_OBJETIVO}`);
+  });
+
+  parser.on('data', (data) => {
+    console.log('Datos recibidos:', data);
     dataSplit = data.split(',')
     tocOnline ={
       aud_esta: 'I',
@@ -78,10 +82,6 @@ function iniciarConexion() {
       sar_atoc: '',
     }
     console.log(tocOnline)
-  });
-
-  parser.on('data', (data) => {
-    console.log('Datos recibidos:', data);
   });
 
   port.on('error', (err) => {
