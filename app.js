@@ -1,8 +1,9 @@
 const { SerialPort, ReadlineParser } = require('serialport');
 const { Sequelize } = require('sequelize');
 const Mamovsar = require('./src/model/mamovsar')
+const { portSerial } = require('./src/config')
 
-const PUERTO_OBJETIVO = 'COM4'; // Reemplaza con el puerto deseado
+const PUERTO_OBJETIVO = portSerial; 
 const BAUD_RATE = 9600;
 let port;
 let parser;
