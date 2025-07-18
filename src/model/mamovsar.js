@@ -25,7 +25,9 @@ const Mamovsar = db.define('mamovsar', {
 
 },
 {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false,
+    id: false, 
 }
 )
 
