@@ -82,6 +82,11 @@ function iniciarConexion() {
       sar_atoc: '',
     }
     console.log(tocOnline)
+    try {
+      postConductividad(tocOnline)
+    } catch (error) {
+      console.log(error)
+    }
   });
 
   port.on('error', (err) => {
