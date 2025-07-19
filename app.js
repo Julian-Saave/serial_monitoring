@@ -32,7 +32,7 @@ const getDateTime = (fecha, hora) => {
   const [dia, mesStr, anio] = fecha.toLowerCase().split(' ');
   const mes = meses[mesStr];
 
-  return `${anio}/${mes}/${dia.padStart(2, '0')} ${hora}`;
+  return `${anio}-${mes}-${dia.padStart(2, '0')}T${hora}Z`;
 }
 
 
@@ -78,8 +78,8 @@ function iniciarConexion() {
       sar_ucon: 'uS/cm',
       sar_vtem: dataSplit[7],
       sar_utem: '°C',
-      sar_acon: '',
-      sar_atoc: '',
+      sar_acon: false,
+      sar_atoc: false,
     }
     console.log(tocOnline)
     try {

@@ -27,16 +27,9 @@ const Mamovsar = db.define('mamovsar', {
 {
     freezeTableName: true,
     timestamps: false,
-    id: false, 
+
 }
 )
 
-Mamovsar.sync()
-    .then(()=>{
-        console.log('tabla Mamovsar sincronizada');
-    })
-    .catch((error)=>{
-        console.error('Mamovsar error:', error);
-    });
-
+Mamovsar.removeAttribute('id');
 module.exports = Mamovsar;
